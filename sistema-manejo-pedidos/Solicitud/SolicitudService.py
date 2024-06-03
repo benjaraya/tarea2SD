@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from aiokafka import AIOKafkaProducer
+from kafka import KafkaProducer
 import asyncio
 import requests
 import json
@@ -7,7 +7,7 @@ import json
 
 
 async def send_one():
-    producer = AIOKafkaProducer(
+    producer = KafkaProducer(
         bootstrap_servers='localhost:9092')
     await producer.start()
     try:
